@@ -1,6 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Box } from "@mui/material";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -26,7 +26,7 @@ export default function Swipers() {
         spaceBetween={30}
         loop={true}
         autoplay={{
-          delay:4000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         navigation={true}
@@ -36,28 +36,57 @@ export default function Swipers() {
         {data.map((item) => (
           <>
             <SwiperSlide key={item.title}>
-              <Card sx={{ maxWidth: "100%" }}>
+              <Card sx={{ maxWidth: "100%", position: "relative" }}>
                 <CardMedia
                   component="img"
                   alt="green iguana"
                   sx={{
                     height: { xs: "440px", sm: "500px" },
-
                     objectPosition: { xs: "right", sm: "top" },
                   }}
                   image={item.img}
                 />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2">{item.description}</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" variant="outlined" color="success">
-                    Batafsil ma`lumot
-                  </Button>
-                </CardActions>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", sm: "row" },
+                    justifyContent: { xs: "flex-start", sm: "space-around" },
+                    alignItems: { xs: "flex-start", sm: "center" },
+                    position: "absolute",
+                    bottom: "0",
+                    width: "100%",
+                    background: "rgba(0, 0, 0, 0.5)",
+                    color: "#fff",
+                    padding: "16px",
+                  }}
+                >
+                  <div>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      sx={{ fontSize: { sm: "40px" } }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        maxWidth: { xs: "350px", sm: "550px" },
+                        fontSize: { sm: "22px" },
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </div>
+                  <CardActions
+                    sx={{ alignSelf: { xs: "flex-start", sm: "flex-end" } }}
+                  >
+                    <Button size="small" variant="outlined" color="success">
+                      Batafsil ma`lumot
+                    </Button>
+                  </CardActions>
+                </Box>
               </Card>
             </SwiperSlide>
           </>
