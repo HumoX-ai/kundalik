@@ -11,7 +11,6 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 import {
   Card,
   CardMedia,
-  CardContent,
   Typography,
   CardActions,
   Button,

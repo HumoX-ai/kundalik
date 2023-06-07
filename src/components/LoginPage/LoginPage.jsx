@@ -8,25 +8,23 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import db from "../../api/db.json"; // Import the JSON file
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
+
 export const LoginPage = ({ handleLogin }) => {
   const [loginError, setLoginError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  let isTeacher = false;
-  let isStudent = false;
+  const [data, setData] = useState([]); // Store the fetched data
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data/data.json");
+        const response = await axios.get("http://localhost:3000/posts");
         const jsonData = response.data;
+        setData(jsonData); // Set the fetched data
         setIsLoading(false);
-
-        // Use jsonData for further processing
-        console.log(jsonData);
       } catch (error) {
         console.error(error);
       }
@@ -37,26 +35,21 @@ export const LoginPage = ({ handleLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const login = data.get("login");
-    const password = data.get("password");
-
-    // Check if the login and password match a teacher's credentials
-    const isTeacher = db.teachers.some(
-      (teacher) => teacher.login === login && teacher.password === password
-    );
-
-    // Check if the login and password match a student's credentials
-    const isStudent = db.students.some(
-      (student) => student.login === login && student.password === password
-    );
+    const formData = new FormData(e.currentTarget);
+    const login = formData.get("login");
+    const password = formData.get("password");
 
     setIsLoading(true); // Set loading state to true
 
+    // Check if the login and password match a user's credentials
+    const user = data.find(
+      (item) => item.login === login && item.password === password
+    );
+
     setTimeout(() => {
-      if (isTeacher || isStudent) {
+      if (user) {
         handleLogin();
-        navigate(isTeacher ? "/teacher" : "/student");
+        navigate(user.role === "teacher" ? "/teacher" : "/student");
       } else {
         setLoginError(true);
         setPasswordError(true);
@@ -120,10 +113,10 @@ export const LoginPage = ({ handleLogin }) => {
             onChange={() => setPasswordError(false)}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="success" />}
             label="Eslab qolish"
           />
-          {loginError && !isTeacher && !isStudent && (
+          {loginError && (
             <Typography color="error">
               Bunday foydalanuvchi mavjud emas
             </Typography>
@@ -139,11 +132,21 @@ export const LoginPage = ({ handleLogin }) => {
             {isLoading ? (
               <CircularProgress size={24} color="inherit" />
             ) : (
-              (isTeacher || isStudent) && <Link to="/">Kirish</Link>
+              <Typography>Kirish</Typography>
             )}
-            {!isLoading && !(isTeacher || isStudent) && "Kirish"}
           </Button>
         </Box>
+        <Link to="/register">
+          <Typography
+            sx={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              color: "#000",
+            }}
+          >
+            Registratsiya qilish
+          </Typography>
+        </Link>
       </Box>
     </Container>
   );

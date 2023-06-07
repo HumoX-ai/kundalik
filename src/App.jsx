@@ -3,6 +3,7 @@ import {
   Home,
   LoginPage,
   Page404,
+  Register,
   StudentPage,
   TeacherPage,
 } from "./components";
@@ -18,13 +19,17 @@ function App() {
 
   return (
     <Box>
-    
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route
+          path="/register"
+          element={<Register handleLogin={handleLogin} />}
+        />
         <Route
           path="/login"
           element={<LoginPage handleLogin={handleLogin} />}
         />
+
         {isLogin ? (
           <>
             <Route path="/student" element={<StudentPage />} />

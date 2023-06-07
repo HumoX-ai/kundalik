@@ -1,9 +1,9 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const Page404 = () => {
   return (
-    <Box
+    <Container
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -20,13 +20,19 @@ export const Page404 = () => {
       </Typography>
       <Typography
         variant="h6"
-        style={{ color: "black", fontFamily: "monospace" }}
+        style={{
+          color: "black",
+          fontFamily: "monospace",
+          textAlign: "center",
+        }}
       >
         The page you’re looking for doesn’t exist.
       </Typography>
       <Link to="/">
-        <Button variant="contained" color="success">Back Home</Button>
+        <Button variant="contained" color="success" sx={{ mt: 2 }}>
+          Back Home
+        </Button>
       </Link>
-    </Box>
+    </Container>
   );
 };
