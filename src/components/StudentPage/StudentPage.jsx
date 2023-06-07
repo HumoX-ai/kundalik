@@ -39,9 +39,18 @@ export const StudentPage = () => {
     <Box sx={{ flexGrow: 1, padding: 2 }}>
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {Array.from(Array(6)).map((_, index) => (
-          <Grid item xs={12} sm={4} md={4} key={index}>
+          <Grid
+            item
+            xs={12}
+            sm={4}
+            md={4}
+            key={index}>
             <Item>
-              <Accordion sx={{ backgroundColor: "#fff", boxShadow: "none" }}>
+              <Accordion
+                sx={{
+                  backgroundColor: "#fff",
+                  boxShadow: "none"
+                }}>
                 <AccordionSummary
                   expandIcon={<BsChevronDown />}
                   aria-controls="panel1a-content"
@@ -50,7 +59,9 @@ export const StudentPage = () => {
                   <Typography>Group {index + 1}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Table sx={{ minWidth: "full" }} aria-label="simple table">
+                  <Table
+                    sx={{ minWidth: "full" }}
+                    aria-label="simple table">
                     <TableHead>
                       <TableRow>
                         <TableCell>Name</TableCell>
@@ -64,10 +75,14 @@ export const StudentPage = () => {
                           key={row.name}
                           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                          <TableCell component="th" scope="row">
+                          <TableCell
+                            component="th"
+                            scope="row">
                             {row.full_name}
                           </TableCell>
-                          <TableCell align="center">{row.ball}</TableCell>
+                          <TableCell align="center">
+                            {row.ball}
+                          </TableCell>
                           <TableCell align="right">
                             <Button variant="contained" sx={{
                               color: '#fff',
@@ -75,7 +90,8 @@ export const StudentPage = () => {
                               "&:hover": {
                                 backgroundColor: '#f009'
                               }
-                            }}>Kick</Button></TableCell>
+                            }}>Kick</Button>
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
