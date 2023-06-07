@@ -64,6 +64,14 @@
       "lastName": "Abduqodirov",
       "role": "teacher",
       "id": 11
+    },
+    {
+      "login": "humoyun19123",
+      "password": "20051912",
+      "firstName": "Humoyun",
+      "lastName": "Abduqodirov",
+      "role": "teacher",
+      "id": 12
     }
   ]
 }
