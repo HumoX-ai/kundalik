@@ -18,7 +18,6 @@ function App() {
 
   return (
     <Box>
-    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
