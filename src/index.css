@@ -16,3 +16,10 @@ a {
 .swiper-button-next {
   display: none;
 }
+
+.textUnderline{
+  cursor: pointer;
+}
+.textUnderline:hover {
+  text-decoration: underline;
+}

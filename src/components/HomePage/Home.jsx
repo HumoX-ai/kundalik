@@ -197,7 +197,7 @@ export const Home = (props) => {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: "block", sm: "none" },
+              display: { xs: "block", md: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
@@ -230,34 +230,13 @@ export const Home = (props) => {
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <Box sx={{ color: "#fff", textAlign: "center" }}>
               <Typography variant="h6">Tashkilot haqida</Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
+              <Typography variant="subtitle1" className="textUnderline">
                 Biz haqimizda
               </Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
+              <Typography variant="subtitle1" className="textUnderline">
                 Yangiliklar
               </Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
+              <Typography variant="subtitle1" className="textUnderline">
                 Aloqa uchun ma`lumotlar
               </Typography>
               <Box
@@ -276,24 +255,10 @@ export const Home = (props) => {
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <Box sx={{ color: "#fff", textAlign: "center" }}>
               <Typography variant="h6">Imkoniyatlar</Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
+              <Typography variant="subtitle1" className="textUnderline">
                 O`qituvchilarga
               </Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
+              <Typography variant="subtitle1" className="textUnderline">
                 O`quvchilarga
               </Typography>
             </Box>
@@ -301,14 +266,7 @@ export const Home = (props) => {
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <Box sx={{ color: "#fff", textAlign: "center" }}>
               <Typography variant="h6">Hamkorlarga</Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
+              <Typography variant="subtitle1" className="textUnderline">
                 Hamkorlik dasturlari
               </Typography>
             </Box>
@@ -326,11 +284,7 @@ export const Home = (props) => {
               <Typography
                 variant="subtitle1"
                 color="green"
-                sx={{
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
+                className="textUnderline"
               >
                 Qo`llab-quvvatlash xizmati portal
               </Typography>
