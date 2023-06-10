@@ -1,77 +1,12 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "login": "asd",
-      "password": "asd",
-      "role": "student",
-      "id": 3
-    },
-    {
-      "login": "asds",
-      "password": "asd",
-      "role": "student",
-      "id": 4
-    },
-    {
-      "login": "asdq",
-      "password": "asd",
-      "role": "student",
-      "id": 5
-    },
-    {
-      "login": "asdss",
-      "password": "asd",
-      "role": "student",
-      "id": 6
-    },
-    {
-      "login": "qwe",
-      "password": "qwe",
-      "role": "student",
-      "id": 7
-    },
-    {
-      "login": "qweqw",
-      "password": "qwe",
-      "role": "teacher",
-      "id": 8
-    },
-    {
-      "login": "asdaaa",
-      "password": "asd",
-      "firstName": "asd",
-      "lastName": "asd",
-      "role": "student",
-      "id": 9
-    },
-    {
-      "login": "humoyun1912",
+      "login": "humoyun",
       "password": "20051912",
       "firstName": "Humoyun",
       "lastName": "Abduqodirov",
-      "role": "teacher",
-      "id": 10
-    },
-    {
-      "login": "humoyun19121",
-      "password": "20051912",
-      "firstName": "Humoyun",
-      "lastName": "Abduqodirov",
-      "role": "teacher",
-      "id": 11
-    },
-    {
-      "login": "humoyun19123",
-      "password": "20051912",
-      "firstName": "Humoyun",
-      "lastName": "Abduqodirov",
-      "role": "teacher",
-      "id": 12
+      "role": "student",
+      "id": 1
     }
   ]
 }

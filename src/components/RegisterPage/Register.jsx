@@ -22,6 +22,7 @@ export const Register = ({ handleLogin }) => {
   const [isTeacher, setIsTeacher] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
   const [existingUser, setExistingUser] = useState(false);
+  const [universityError, setUniversityError] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -31,19 +32,25 @@ export const Register = ({ handleLogin }) => {
     const password = data.get("password");
     const firstName = data.get("firstName");
     const lastName = data.get("lastName");
+    const university = data.get("university");
 
     // Check if required fields are empty
     if (
-      !login ||
-      !password ||
-      !firstName ||
-      !lastName ||
-      (!isTeacher && !isStudent)
+      !login.length < 5 ||
+      !password < 6 ||
+      !firstName < 3 ||
+      !lastName < 3 ||
+      (!isTeacher && !isStudent) ||
+      !university ||
+      university.toLowerCase() !== "cambridge"
     ) {
       setLoginError(!login);
       setPasswordError(!password);
       setFirstNameError(!firstName);
       setLastNameError(!lastName);
+      setUniversityError(
+        !university || university.toLowerCase() !== "cambridge"
+      );
       return;
     }
 
@@ -163,6 +170,22 @@ export const Register = ({ handleLogin }) => {
             helperText={lastNameError ? "Familiyani kiriting" : ""}
             onChange={() => setLastNameError(false)}
           />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="university"
+            label="Kalit so'z"
+            name="university"
+            autoComplete="off"
+            color="success"
+            error={universityError}
+            helperText={universityError ? "Kalit so'zni kiriting" : ""}
+            onChange={(e) => {
+              const value = e.target.value.toLowerCase();
+              setUniversityError(value !== "cambridge");
+            }}
+          />
           <FormControlLabel
             control={
               <Checkbox
@@ -197,7 +220,6 @@ export const Register = ({ handleLogin }) => {
             variant="contained"
             color={loginError ? "error" : "success"}
             sx={{ mt: 3, mb: 2 }}
-            
             disabled={isLoading}
           >
             {isLoading ? "Loading..." : "Ro`yxatdan o`tish"}

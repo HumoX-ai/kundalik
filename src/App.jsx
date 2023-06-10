@@ -19,6 +19,7 @@ function App() {
     setIsLogin(true);
     localStorage.setItem("isLogin", true);
   };
+
   const handleLogout = () => {
     setIsLogin(false);
     localStorage.removeItem("isLogin");
@@ -51,6 +52,7 @@ function App() {
         ) : (
           <Route path="*" element={<Navigate to="/404" />} />
         )}
+
         <Route path="/404" element={<Page404 />} />
       </Routes>
     </Box>

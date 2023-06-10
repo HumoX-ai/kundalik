@@ -49,7 +49,9 @@ export const LoginPage = ({ handleLogin }) => {
     setTimeout(() => {
       if (user) {
         handleLogin();
-        navigate(user.role === "teacher" ? "/teacher" : "/student");
+        navigate(user.role === "teacher" ? "/teacher" : "/student", {
+          state: { firstName: user.firstName, lastName: user.lastName },
+        });
       } else {
         setLoginError(true);
         setPasswordError(true);

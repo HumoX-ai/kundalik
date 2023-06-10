@@ -211,7 +211,6 @@ export const Home = (props) => {
           <Toolbar />
         </Box>
       </Box>
-      {/* Main */}
 
       <Box sx={{ mt: -3 }}>
         <Swipers />
