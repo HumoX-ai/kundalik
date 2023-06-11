@@ -23,7 +23,6 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TextField from "@mui/material/TextField";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { Link, useLocation } from "react-router-dom";
 
 export const TeacherPage = ({ handleLogout }) => {

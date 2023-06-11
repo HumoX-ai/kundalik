@@ -36,18 +36,19 @@ export const Register = ({ handleLogin }) => {
 
     // Check if required fields are empty
     if (
-      !login.length < 5 ||
-      !password < 6 ||
-      !firstName < 3 ||
-      !lastName < 3 ||
+      login.length < 5 ||
+      password.length < 6 ||
+      firstName.length < 3 ||
+      lastName.length < 3 ||
       (!isTeacher && !isStudent) ||
       !university ||
       university.toLowerCase() !== "cambridge"
     ) {
-      setLoginError(!login);
-      setPasswordError(!password);
-      setFirstNameError(!firstName);
-      setLastNameError(!lastName);
+      // Update related states according to error conditions
+      setLoginError(login.length < 5);
+      setPasswordError(password.length < 6);
+      setFirstNameError(firstName.length < 3);
+      setLastNameError(lastName.length < 3);
       setUniversityError(
         !university || university.toLowerCase() !== "cambridge"
       );

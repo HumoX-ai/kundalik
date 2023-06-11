@@ -7,6 +7,14 @@
       "lastName": "Abduqodirov",
       "role": "student",
       "id": 1
+    },
+    {
+      "login": "shoxruh",
+      "password": "shox2005",
+      "firstName": "Shohruh",
+      "lastName": "Irisboyev",
+      "role": "teacher",
+      "id": 2
     }
   ]
 }

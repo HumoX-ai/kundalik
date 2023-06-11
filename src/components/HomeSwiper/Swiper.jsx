@@ -40,7 +40,7 @@ export default function Swipers() {
                   component="img"
                   alt="green iguana"
                   sx={{
-                    height: { xs: "440px", sm: "500px" },
+                    height: { xs: "440px", sm: "600px" },
                     objectPosition: { xs: "right", sm: "top" },
                   }}
                   image={item.img}
