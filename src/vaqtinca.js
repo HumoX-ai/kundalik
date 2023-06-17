@@ -3,21 +3,6 @@ export const DATA = [
         day: "Monday",
         lesson: false,
         grades: [
-            {
-                reason: "Homework",
-                grade: 59,
-                comment: "juda yaxshi"
-            },
-            {
-                reason: "For Lesson",
-                grade: 48,
-                comment: "zo'r"
-            },
-            {
-                reason: "Extra",
-                grade: 57,
-                comment: "zo'r"
-            },
         ]
     },
     {
@@ -29,37 +14,12 @@ export const DATA = [
                 grade: 59,
                 comment: "juda yaxshi"
             },
-            {
-                reason: "For Lesson",
-                grade: 48,
-                comment: "zo'r"
-            },
-            {
-                reason: "Extra",
-                grade: 57,
-                comment: "zo'r"
-            },
         ]
     },
     {
         day: "Wednesday",
         lesson: false,
         grades: [
-            {
-                reason: "Homework",
-                grade: 59,
-                comment: "juda yaxshi"
-            },
-            {
-                reason: "For Lesson",
-                grade: 48,
-                comment: "zo'r"
-            },
-            {
-                reason: "Extra",
-                grade: 57,
-                comment: "zo'r"
-            },
         ]
     },
     {
@@ -71,37 +31,12 @@ export const DATA = [
                 grade: 59,
                 comment: "juda yaxshi"
             },
-            {
-                reason: "For Lesson",
-                grade: 48,
-                comment: "zo'r"
-            },
-            {
-                reason: "Extra",
-                grade: 57,
-                comment: "zo'r"
-            },
         ]
     },
     {
         day: "Friday",
         lesson: false,
         grades: [
-            {
-                reason: "Homework",
-                grade: 59,
-                comment: "juda yaxshi"
-            },
-            {
-                reason: "For Lesson",
-                grade: 48,
-                comment: "zo'r"
-            },
-            {
-                reason: "Extra",
-                grade: 57,
-                comment: "zo'r"
-            },
         ]
     },
     {
@@ -112,16 +47,6 @@ export const DATA = [
                 reason: "Homework",
                 grade: 59,
                 comment: "juda yaxshi"
-            },
-            {
-                reason: "For Lesson",
-                grade: 48,
-                comment: "zo'r"
-            },
-            {
-                reason: "Extra",
-                grade: 57,
-                comment: "zo'r"
             },
         ]
     },

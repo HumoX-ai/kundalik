@@ -6,6 +6,7 @@ import {
   Register,
   StudentPage,
   TeacherPage,
+  ParentPage,
 } from "./components";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
@@ -46,6 +47,10 @@ function App() {
         <Route
           path="/teacher"
           element={<TeacherPage handleLogout={handleLogout} />}
+        />
+        <Route
+          path="/parent"
+          element={<ParentPage handleLogout={handleLogout} />}
         />
         {/* </>
         ) : (
