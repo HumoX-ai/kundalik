@@ -27,7 +27,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export const TeacherPage = ({ handleLogout }) => {
   const location = useLocation();
-  const { firstName, lastName } = location.state;
+  const { name, surname } = location.state;
   const [value, setValue] = React.useState("1");
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [currentDate, setCurrentDate] = React.useState(new Date());
@@ -144,7 +144,7 @@ export const TeacherPage = ({ handleLogout }) => {
                           sx={{ width: 30, height: 30 }}
                         />
                         <Typography>
-                          {firstName} {lastName}
+                          {name} {surname}
                         </Typography>
                       </IconButton>
                     </Tooltip>

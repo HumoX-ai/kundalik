@@ -1,20 +1,44 @@
 {
   "posts": [
     {
-      "login": "humoyun",
+      "username": "humoyun",
       "password": "20051912",
-      "firstName": "Humoyun",
-      "lastName": "Abduqodirov",
-      "role": "student",
+      "name": "Humoyun",
+      "surname": "Abduqodirov",
+      "type": "Student",
       "id": 1
     },
     {
-      "login": "shoxruh",
+      "username": "shoxruh",
       "password": "shox2005",
-      "firstName": "Shohruh",
-      "lastName": "Irisboyev",
-      "role": "teacher",
+      "name": "Shohruh",
+      "surname": "Irisboyev",
+      "type": "Teacher",
       "id": 2
+    },
+    {
+      "username": "qwerty",
+      "password": "20059121",
+      "name": "Humoyun",
+      "surname": "Abduqodirov",
+      "type": "Student",
+      "id": 5
+    },
+    {
+      "username": "asdfasdfasdfasd",
+      "password": "asdfasdfasdf",
+      "name": "Humoyun",
+      "surname": "Abduqodirov",
+      "type": "Student",
+      "id": 7
+    },
+    {
+      "username": "dsgdbcvbcv",
+      "password": "cxvbcxvbcxvb",
+      "name": "Humoyun",
+      "surname": "Abduqodirov",
+      "type": "Student",
+      "id": 8
     }
   ]
 }

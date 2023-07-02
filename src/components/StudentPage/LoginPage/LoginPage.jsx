@@ -23,6 +23,7 @@ export const LoginPage = ({ handleLogin }) => {
       try {
         const response = await axios.get("http://localhost:3000/posts");
         const jsonData = response.data;
+        console.log(response.data);
         setData(jsonData); // Set the fetched data
         setIsLoading(false);
       } catch (error) {
@@ -36,22 +37,29 @@ export const LoginPage = ({ handleLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const login = formData.get("login");
+    const username = formData.get("username");
     const password = formData.get("password");
 
     setIsLoading(true); // Set loading state to true
 
     // Check if the login and password match a user's credentials
-    const user = data.find(
-      (item) => item.login === login && item.password === password
+    const user = Object.values(data).find(
+      (item) => item.username === username && item.password === password
     );
 
     setTimeout(() => {
       if (user) {
         handleLogin();
-        navigate(user.role === "teacher" ? "/teacher" : "/student", {
-          state: { firstName: user.firstName, lastName: user.lastName },
-        });
+        navigate(
+          user.type === "Teacher"
+            ? "/teacher"
+            : user.type === "Student"
+            ? "/student"
+            : "/parent",
+          {
+            state: { name: user.name, surname: user.surname },
+          }
+        );
       } else {
         setLoginError(true);
         setPasswordError(true);
@@ -92,7 +100,7 @@ export const LoginPage = ({ handleLogin }) => {
             fullWidth
             id="login"
             label="Login"
-            name="login"
+            name="username"
             autoComplete="text"
             autoFocus
             error={loginError}

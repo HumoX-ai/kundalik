@@ -22,7 +22,7 @@ import { StudentData } from "../../vaqtincha";
 // eslint-disable-next-line react/prop-types
 export const StudentPage = ({ handleLogout }) => {
   const location = useLocation();
-  const { firstName, lastName } = location.state;
+  const { name, surname } = location.state;
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -71,7 +71,7 @@ export const StudentPage = ({ handleLogout }) => {
                   sx={{ display: { xs: "none", sm: "block" } }}
                 />
                 <Typography>
-                  {firstName} {lastName}
+                  {name} {surname}
                 </Typography>
               </IconButton>
             </Tooltip>
@@ -117,7 +117,7 @@ export const StudentPage = ({ handleLogout }) => {
         >
           <Box>
             <Typography fontWeight={600} fontSize={20} mb={1.5}>
-              {firstName} {lastName}
+              {name} {surname}
             </Typography>
             <Typography fontSize={15} mb={0.5}>
               O'qituvchi: Boburmiro Rosulov

@@ -3,6 +3,7 @@ import {
   Home,
   LoginPage,
   Page404,
+  ParentPage,
   Register,
   StudentPage,
   TeacherPage,
@@ -47,6 +48,10 @@ function App() {
             <Route
               path="/teacher"
               element={<TeacherPage handleLogout={handleLogout} />}
+            />
+            <Route
+              path="/parent"
+              element={<ParentPage handleLogout={handleLogout} />}
             />
           </>
         ) : (

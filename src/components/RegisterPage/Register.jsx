@@ -16,11 +16,12 @@ import axios from "axios";
 export const Register = ({ handleLogin }) => {
   const [loginError, setLoginError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
+  const [nameError, setnameError] = useState(false);
+  const [surnameError, setsurnameError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isTeacher, setIsTeacher] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
+  const [isParent, setIsParent] = useState(false); // New state for parent type
   const [existingUser, setExistingUser] = useState(false);
   const [universityError, setUniversityError] = useState(false);
   const navigate = useNavigate();
@@ -28,27 +29,26 @@ export const Register = ({ handleLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const login = data.get("login");
+    const username = data.get("login");
     const password = data.get("password");
-    const firstName = data.get("firstName");
-    const lastName = data.get("lastName");
+    const name = data.get("name");
+    const surname = data.get("surname");
     const university = data.get("university");
 
     // Check if required fields are empty
     if (
-      login.length < 5 ||
+      username.length < 5 ||
       password.length < 6 ||
-      firstName.length < 3 ||
-      lastName.length < 3 ||
-      (!isTeacher && !isStudent) ||
+      name.length < 3 ||
+      surname.length < 3 ||
+      (!isTeacher && !isStudent && !isParent) ||
       !university ||
       university.toLowerCase() !== "cambridge"
     ) {
-      // Update related states according to error conditions
-      setLoginError(login.length < 5);
+      setLoginError(username.length < 5);
       setPasswordError(password.length < 6);
-      setFirstNameError(firstName.length < 3);
-      setLastNameError(lastName.length < 3);
+      setnameError(name.length < 3);
+      setsurnameError(surname.length < 3);
       setUniversityError(
         !university || university.toLowerCase() !== "cambridge"
       );
@@ -58,25 +58,22 @@ export const Register = ({ handleLogin }) => {
     setIsLoading(true);
 
     try {
-      // Check if the user with the provided login already exists
       const checkResponse = await axios.get(
-        `http://localhost:3000/posts?login=${login}`
+        `http://localhost:3000/posts?username=${username}`
       );
 
-      if (checkResponse.data.length > 0) {
-        // User already exists
+      if (checkResponse.data && checkResponse.data.length > 0) {
         setExistingUser(true);
         setIsLoading(false);
         return;
       }
 
-      // User doesn't exist, proceed with registration
       const response = await axios.post("http://localhost:3000/posts", {
-        login,
+        username,
         password,
-        firstName,
-        lastName,
-        role: isTeacher ? "teacher" : "student",
+        name,
+        surname,
+        type: isTeacher ? "teacher" : isStudent ? "Student" : "parent",
       });
 
       handleLogin();
@@ -149,27 +146,27 @@ export const Register = ({ handleLogin }) => {
             margin="normal"
             required
             fullWidth
-            id="firstName"
+            id="name"
             label="Ism"
-            name="firstName"
+            name="name"
             autoComplete="given-name"
             color="success"
-            error={firstNameError}
-            helperText={firstNameError ? "Ismni kiriting" : ""}
-            onChange={() => setFirstNameError(false)}
+            error={nameError}
+            helperText={nameError ? "Ismni kiriting" : ""}
+            onChange={() => setnameError(false)}
           />
           <TextField
             margin="normal"
             required
             fullWidth
-            id="lastName"
+            id="surname"
             label="Familiya"
-            name="lastName"
+            name="surname"
             autoComplete="family-name"
             color="success"
-            error={lastNameError}
-            helperText={lastNameError ? "Familiyani kiriting" : ""}
-            onChange={() => setLastNameError(false)}
+            error={surnameError}
+            helperText={surnameError ? "Familiyani kiriting" : ""}
+            onChange={() => setsurnameError(false)}
           />
           <TextField
             margin="normal"
@@ -196,6 +193,7 @@ export const Register = ({ handleLogin }) => {
                 onChange={() => {
                   setIsTeacher(!isTeacher);
                   setIsStudent(false);
+                  setIsParent(false); // Uncheck parent when teacher is selected
                 }}
               />
             }
@@ -204,16 +202,32 @@ export const Register = ({ handleLogin }) => {
           <FormControlLabel
             control={
               <Checkbox
-                value="student"
+                value="Student"
                 color="success"
                 checked={isStudent}
                 onChange={() => {
                   setIsStudent(!isStudent);
                   setIsTeacher(false);
+                  setIsParent(false); // Uncheck parent when Student is selected
                 }}
               />
             }
             label="Talaba"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                value="parent"
+                color="success"
+                checked={isParent}
+                onChange={() => {
+                  setIsParent(!isParent);
+                  setIsTeacher(false);
+                  setIsStudent(false); // Uncheck Student when parent is selected
+                }}
+              />
+            }
+            label="Ota-ona"
           />
           <Button
             type="submit"
